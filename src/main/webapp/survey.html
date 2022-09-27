@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Survey</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href = "https://code.jquery.com/ui/1.13.1/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">	
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+function validateData() {
+    var curr_values = document.getElementById("number");
+    var error_values = document.getElementById("errordisplay");
+    var error_disp = document.getElementById("errordisplay2");
+    var msg = document.getElementById("success_msg");
+    var currdata = curr_values.value;
+    var nums = currdata.split(',');
+
+    if(nums.length > 9){
+      error_values.hidden = true;
+      error_disp.hidden = true; 
+      msg.hidden = true;
+      for(var i=0;i<nums.length;i++)
+      {
+        if(nums[i]<=0 || nums[i]>100)
+        {
+          error_disp.hidden = false;
+        }
+      }
+
+      if(error_disp.hidden == true)
+      {
+        msg.hidden = false; 
+      } 
+    }
+
+    else {
+      error_values.hidden = false;
+    }
+}
+
+function submitform(){
+
+  alert("Form submitted");
+}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>
+
+body {
+
+	font-family: "Lato", sans-serif
+    }
+
+</style>
+</head>
+<body>
+<div class="backcolor">
+<div class="w3-top">
+ <div class="menu">
+  <div class="w3-bar w3-card">
+    <a href="survey.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SURVEY</a>
+   </div>
+  <div id="breadcrumb-header">
+   <h1 class="title"><b>Survey Form</b><div class="note">
+      <h1><a id="change" href="javascript:wrongPerson()"></a></h1>
+    </div>
+   <div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable" aria-describedby="dialog-confirm" aria-labelledby="ui-id-1" style="height: auto; width: 400px; top: 1400.55px; left: 559.5px; z-index: 101;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle">
+   	<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close">
+   		<span class="ui-button-icon ui-icon ui-icon-closethick"></span>
+   		<span class="ui-button-icon-space"> </span>Close</button></div>
+   		<div id="dialog-confirm" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 8.3px; max-height: none; height: auto;">
+			<span id="errors"></span>
+			</div>
+			<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+				<div class="ui-dialog-buttonset">
+					<button type="button" class="ui-button ui-corner-all ui-widget">Delete</button>
+					<button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button>
+				</div>
+			</div>
+		</div>
+</div>
+  </div>
+ </div>
+ 
+  <form class="w3-container w3-card-4" id="surveyForm" style="margin-left:30%;margin-right:30%;margin-top: 14%;">		
+	
+			<br>
+			<!-- username-->
+			<p>      
+				<label class="w3-text required" for="UserName"><b>First Name</b></label><br>
+				<input class="w3-input" type="text" id="Firstname" name="firstname" autocomplete="on" required autofocus="autofocus"><br><br>
+			</p>
+			<p>      
+				<label class="w3-text required" for="UserName"><b>Last Name</b></label><br>
+				<input class="w3-input" type="text" id="Lastname" name="Lastname" autocomplete="on" required autofocus="autofocus"><br><br>
+			</p>
+			<!-- address-->
+			<p>      
+				<label class="w3-text required" for="Address"><b>Street Address</b></label><br>
+				<input class="w3-input" type="text" id="address" name="address" autocomplete="on" required><br><br>
+			</p>
+			<!-- city-->
+			<p>      
+				<label class="w3-text required" for="City"><b>City</b></label>
+				<input class="w3-input" type="text" id="city" name="city" autocomplete="on" required>				
+			</p>
+			<!-- state-->
+			<p>      
+				<label class="w3-text required" for="State"><b>State</b></label>
+				<input class="w3-input" type="text" id="state" name="state" autocomplete="on" required>				
+			</p>
+    <!-- zip-->
+			<p>      
+				<label class="w3-text required" for="zip"><b>zip</b></label><br>
+				<input class="w3-input" type="text" id="zip" name="zip" placeholder="00000" pattern="[0-9]{5}" autocomplete="on" required><br><br>
+			</p>
+			<div id="zip_error" class="error" style="color:red;"hidden>Please enter the valid zip code</div>
+			<p></p>
+            <!-- telephone number-->
+			<p>      
+				<label class="w3-text required" for="phone"><b>Telephone Number</b></label>
+				<input type="w3-input" type="text" id="phonenumber" name="phonenumber" placeholder="999-888-9999" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" autocomplete="on" required><br><br>
+			</p>
+			<!--email-->
+			<p>      
+				<label class="w3-text required" for="Email"><b>Email</b></label>
+				<input class="w3-input" type="text" id="email" name="email" placeholder="abc@gmail.com" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" autocomplete="on" required>
+			</p>
+			<!--date of survey -->
+			<p>      
+				<label class="w3-text required" for="dateOfSurvey"><b>Date of Survey</b></label>
+				<input class="w3-input" type="date" id="Date" name="Date" autocomplete="on" required>
+			</p>
+			<br>
+			<div class="w3-row">
+					<legend><b>What did you like most about campus?</b></legend>
+					<input class="w3-check" type="checkbox" id="students" name="students_fav" value="students" autocomplete="on">
+					<label class="w3-validate" for="students"> Students</label><br>
+					<input class="w3-check" type="checkbox" id="location" name="students_loc" value="location" autocomplete="on">
+					<label class="w3-validate" for="location"> Location</label><br>
+					<input class="w3-check" type="checkbox" id="campus" name="students_cam" value="campus" autocomplete="on">
+					<label class="w3-validate" for="campus"> Campus</label><br>
+					<input class="w3-check" type="checkbox" id="atmosphere" name="students_atm" value="atmosphere" autocomplete="on">
+					<label class="w3-validate" for="atmosphere"> Atmosphere</label><br>
+					<input class="w3-check" type="checkbox" id="dorm" name="students_dorm" value="dorm rooms" autocomplete="on">
+					<label class="w3-validate" for="dorm_rooms"> Dorm rooms</label><br>
+					<input class="w3-check" type="checkbox" id="sports" name="students_sport" value="sports" autocomplete="on">
+					<label class="w3-validate" for="sports"> Sports</label>
+			  
+			</div>
+			<br>
+			<div class="w3-row">		
+				
+					<legend style="color: #42413f;"><b>Reason for your interest in the university?</b></legend>
+					<input class="w3-radio" type="radio" id="friends" name="reson1" value="Friends" autocomplete="on">
+					<label class="w3-validate" for="friends">Friends</label><br>
+					<input class="w3-radio" type="radio" id="Television" name="reason2" value="Television" autocomplete="on">
+					<label class="w3-validate" for="Television">Television</label><br>
+					<input class="w3-radio" type="radio" id="other" name="reason3" value="other" autocomplete="on">
+					<label class="w3-validate" for="Television">Internet</label><br>
+					<input class="w3-radio" type="radio" id="other" name="reason4" value="other" autocomplete="on">
+					<label class="w3-validate" for="other">Others</label>
+				
+			</div>  <br>			
+				<div class="w3-row">	
+						<legend style="color: #42413f;"><b>How likely do you recommend this university?</b></legend>
+						<select name="recommenduni" id="recommenduni">
+							<option value="select">Select</option>
+							<option value="Very Likely">Very Likely</option>
+							<option value="Likely">Likely</option>
+							<option value="UnLikely">UnLikely</option>					
+						</select>
+				</div>
+				<br>
+				<div class="w3-text">
+						<legend style="color: #42413f;"><b>Raffle (Enter atleast 10 numbers sparated by commas ranging from 1 to 100)</b></legend>
+						<input type="raffle" name="data" onfocusout="validateData()" id="number">
+						<br>
+					<div id="errordisplay" class="error" hidden="" style="color:red;">Please Enter atleast 10 numbers separated by commas</div>
+					<div id="errordisplay2" class="error2" hidden="" style="color:red;">Please enter atleast 10 numbers sparated by commas ranging from 1 to 100</div>
+					<div id="success_msg" class="success" hidden="" style="color:red;">Won the movie ticket</div>		
+				</div>	
+				<br>
+				<label class="w3-text" for="comments"><b>Additional Comments</b></label><br>
+				<textarea id="comment" name="comments" rows="4" cols="60" autocomplete="on">			
+				</textarea>
+				<br>			
+				<p>
+				<button type="submit" class="w3-btn w3-padding georgeMason" style="width:120px;background-color:#006633;color: #fff;" onclick="submitform()">
+					<b>Submit</b></button>
+				<button type="reset" class="w3-btn w3-padding georgeMason" style="width:120px;background-color:#006633;color: #fff;">
+					<b>Cancel</b></button>
+				</p>				
+			</form>
+</div>
+</body>
+</html>

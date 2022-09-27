@@ -1,0 +1,85 @@
+.mySlides
+{
+	display: none
+}
+
+.menu
+{
+  background-color:#006633;
+  color: #ccebde;
+  height:160px;
+  box-shadow: 1px 10px 5px #aaaaaa;
+}
+.masonLogo
+{
+  margin-right: 20px;
+  position: sticky;
+  bottom: 0;
+  float: right;
+}
+.w3-padding-large{
+  font-size: 20px;
+  line-height:2.5;
+}
+
+#breadcrumb-header{
+
+background-color: #FFCC33;
+height: 65px;
+margin: 5px 5px 5px 5px;
+
+}
+.title
+{
+  text-align: center;
+  padding-top: 4px;
+  color:#42413f;
+  font-family: 'Roboto Slab',serif;
+  font-weight: normal;
+  font-size:25px;
+}
+.form
+{
+	text-align: center;
+}
+.w3-input {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 50%;
+}
+#surveyForm
+{
+     color: #42413f;
+    font-family: 'Roboto Slab',serif;
+    font-weight: normal;
+}
+
+.required:after {
+    content: "*";
+    color: red;
+}
+.titlehead
+{
+  background-color:#006633;
+  text-align:center;
+  color: #ccebde;
+  height: 60px;
+}
+.titlehead2
+{
+  background-color:#006633;
+  text-align:center;
+  color: #ccebde;
+  height: 60px;
+}
+#change
+{
+	font-size:20px;
+	color: black;
+}
+.note
+{
+	margin: -32px
+}
